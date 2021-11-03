@@ -1,5 +1,5 @@
 # autogain
 
-"TAS;tas-obliv;segments"
+Autogain: "TAS;tas-obliv;segments"
 
-"TASNSL;tasnsl-obliv;segments"
+Autogain no speed loss: "TASNSL;tasnsl-obliv;segments"
