@@ -1,3 +1,4 @@
+// ghetto plugin i made, pls don't roast me for how bad it is.
 #pragma semicolon 1
 
 #define DEBUG
@@ -337,12 +338,6 @@ public Action OnPlayerRunCmd(int client, int& buttons, int& impulse, float vel[3
 	currentspeed = GetVectorDotProduct(velocity, wishdir);
 	addspeed = wishspd - currentspeed;
 
-	//if (_addspeed != 0.0 && addspeed != 0.0 && no_speed_loss[client])
-	//{		
-	//	if (addspeed > _addspeed) addspeed = addspeed - _addspeed;
-	//	else if (_addspeed >= addspeed) addspeed = _addspeed - addspeed;
-	//}
-
 	if (no_speed_loss[client])
 	{
 		if (_addspeed > addspeed)
@@ -399,9 +394,6 @@ public Action OnPlayerRunCmd(int client, int& buttons, int& impulse, float vel[3
 	GetEntPropVector(client, Prop_Data, "m_vecBaseVelocity", base_vel);
 
 	//PrintToChat(client, "%.2f, %.2f, %.2f", base_vel[0], base_vel[1], base_vel[2]);
-	
-	// +0.005 to 0.1 
-	//float diff = get_length_2d(new_vel) - get_length_2d(velocity_opt); 
 
 	if (GetVectorLength(new_vel) < 99999.0 && GetVectorLength(new_vel) > 0.0)
 	{
