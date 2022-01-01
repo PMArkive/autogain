@@ -1,0 +1,39 @@
+"Phrases"
+{
+	"TAS Menu"
+	{
+		"en"		"TAS Menu"
+	}
+	"Timescale"
+	{
+		"en"		"Timescale"
+	}
+	"Current Timescale"
+	{
+		"#format"	"{1:.1f}"
+		"en"		"Current Timescale: {1}"
+	}
+	"Checkpoint TAS"
+	{
+		"en"		"Checkpoint TAS"
+	}
+	"Settings"
+	{
+		"en"		"Settings"
+	}
+	"Auto gain"
+	{
+		"#format"	"{1:s}"
+		"en"		"[{1}] Auto gain"
+	}
+	"Prestrafe hack"
+	{
+		"#format"	"{1:s}"
+		"en"		"[{1}] Prestrafe hack"
+	}
+	"Autojump"
+	{
+		"#format"	"{1:s}"
+		"en"		"[{1}] Auto-jump from start zone?"
+	}
+}
