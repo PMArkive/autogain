@@ -415,69 +415,6 @@ public Action OnPlayerRunCmd(int client, int& buttons, int& impulse, float vel[3
 	return Plugin_Continue;
 }
 
-public MRESReturn process_movement_hk(Handle h_params)
-{
-	int client = DHookGetParam(h_params, 1);
-	//int b = view_as<Address>(DHookGetParam(h_params, 3));
-
-	//PrintToChat(client, "%i\n", b);
-	
-	return MRES_Handled;
-}
-
-void load_dhooks()
-{
-	GameData gamedata = new GameData("shavit.games");
-	//Address addr = gamedata.GetAddress("CategorizePosition");
-
-	if(gamedata == null)
-	{
-		SetFailState("Failed to load gamedata");
-	}
-	
-	StartPrepSDKCall(SDKCall_Static);
-	if(!PrepSDKCall_SetFromConf(gamedata, SDKConf_Signature, "CreateInterface"))
-	{
-		SetFailState("Failed to get CreateInterface");
-	}
-	
-	PrepSDKCall_AddParameter(SDKType_String, SDKPass_Pointer);
-	PrepSDKCall_AddParameter(SDKType_PlainOldData, SDKPass_Pointer, VDECODE_FLAG_ALLOWNULL);
-	PrepSDKCall_SetReturnInfo(SDKType_PlainOldData, SDKPass_Plain);
-	Handle CreateInterface = EndPrepSDKCall();
-
-	if(CreateInterface == null)
-	{
-		SetFailState("Unable to prepare SDKCall for CreateInterface");
-	}
-
-	char interfaceName[64];
-	if(!GameConfGetKeyValue(gamedata, "IGameMovement", interfaceName, sizeof(interfaceName)))
-	{
-		SetFailState("Failed to get IGameMovement interface name");
-	}
-
-	Address IGameMovement = SDKCall(CreateInterface, interfaceName, 0);
-	if(!IGameMovement)
-	{
-		SetFailState("Failed to get IGameMovement pointer");
-	}
-
-	int offset = GameConfGetOffset(gamedata, "ProcessMovement");
-	if(offset == -1)
-	{
-		SetFailState("Failed to get ProcessMovement offset");
-	}
-
-	Handle process_movement = DHookCreate(offset, HookType_Raw, ReturnType_Void, ThisPointer_Ignore, process_movement_hk);
-	DHookAddParam(process_movement, HookParamType_CBaseEntity);
-	DHookAddParam(process_movement, HookParamType_ObjectPtr);
-	DHookRaw(process_movement, false, IGameMovement);
-
-	delete CreateInterface;
-	delete gamedata;
-}
-
 stock void FindNewFrictionOffset(int client, bool logOnly = false)
 {
 	if(g_Game == Engine_CSGO)
