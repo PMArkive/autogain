@@ -1,0 +1,53 @@
+"Games"
+{
+	"#default"
+	{
+		"Keys"
+		{
+			"IGameMovement"		"GameMovement001"
+		}
+
+		"Signatures"
+		{
+			"CreateInterface"
+			{
+				"library"		"server"
+				"windows"		"@CreateInterface"
+				"linux"			"@CreateInterface"
+			}
+		}
+
+		"Offsets"
+		{
+			"ProcessMovement"
+			{
+				"windows"		"1"
+				"linux"			"2"
+			}
+		}
+	}
+
+	"csgo"
+	{
+		"Offsets"
+		{
+			"m_surfaceFriction"
+			{
+				"windows"		"8"
+				"linux"			"8"
+			}
+		}
+	}
+
+	"cstrike"
+	{
+		"Offsets"
+		{
+			"m_surfaceFriction"
+			{
+				"windows"		"104"
+				"linux"			"104"
+			}
+		}
+	}
+}
